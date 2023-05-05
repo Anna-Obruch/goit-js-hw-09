@@ -3,7 +3,6 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 const formRef = document.querySelector('.form');
 formRef.addEventListener('submit', onSubmitForm);
 
-
 function createPromise(position, delay) {
   const object = { position, delay };
   const shouldResolve = Math.random() > 0.3;
@@ -37,4 +36,3 @@ function onSubmitForm(e) {
     delay += Number(formRef.step.value);
   }
 }
-

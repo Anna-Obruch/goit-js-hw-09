@@ -1,6 +1,6 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';;
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const refs = {
   dateInput: document.querySelector('input#datetime-picker'),
@@ -32,33 +32,35 @@ const options = {
 flatpickr(refs.dateInput, options);
 
 function currentDifferenceDate(selectedDates) {
-    const currentDate = Date.now();
-  
-    if (selectedDates < currentDate) {
+  const currentDate = Date.now();
+
+  if (selectedDates < currentDate) {
     return Notify.failure('Please choose a date in the future');
-    }
-    timeDifference = selectedDates.getTime() - currentDate;
-    formatDate = convertMs(timeDifference);
-    refs.btnStartTimer.disabled = false
+  }
+  timeDifference = selectedDates.getTime() - currentDate;
+  formatDate = convertMs(timeDifference);
+  refs.btnStartTimer.disabled = false;
 }
 
 function timerStart() {
   intervalId = setInterval(() => {
     currentDate = new Date().getTime();
-        
-    timeDifference-= 1000;
-  if (refs.secondsRemaining.textContent <= 0 && refs.minutesRemaining.textContent <= 0) {
-    Notify.success('Time end');
-    clearInterval(intervalId);
-    refs.btnStartTimer.disabled = true;
-  } 
-  else {
-    formatDate = convertMs(timeDifference);
-    createMarkup(formatDate);
-  }}, TIMER_DELAY);
+
+    timeDifference -= 1000;
+    if (
+      refs.secondsRemaining.textContent <= 0 &&
+      refs.minutesRemaining.textContent <= 0
+    ) {
+      Notify.success('Time end');
+      clearInterval(intervalId);
+      refs.btnStartTimer.disabled = true;
+    } else {
+      formatDate = convertMs(timeDifference);
+      createMarkup(formatDate);
+    }
+  }, TIMER_DELAY);
 }
 refs.btnStartTimer.addEventListener('click', timerStart);
-
 
 function createMarkup({ days, hours, minutes, seconds }) {
   refs.daysRemaining.textContent = days;
@@ -86,4 +88,3 @@ function convertMs(ms) {
   createMarkup({ days, hours, minutes, seconds });
   return { days, hours, minutes, seconds };
 }
-
