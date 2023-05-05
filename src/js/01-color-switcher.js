@@ -3,7 +3,7 @@ const btnStop = document.querySelector('button[data-stop]')
 
 switchDisabledBtn(false)
 const onClickBtnStart = () => {
-    timerId = setInterval(() => {
+const timerId = setInterval(() => {
     document.body.style.backgroundColor = getRandomHexColor()}, 1000)
     switchDisabledBtn(true)
 }
