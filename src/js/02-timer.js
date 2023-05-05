@@ -39,6 +39,7 @@ function currentDifferenceDate(selectedDates) {
   }
   timeDifference = selectedDates.getTime() - currentDate;
   formatDate = convertMs(timeDifference);
+  refs.btnStartTimer.disabled = false;
   refs.btnStartTimer.disabled = true;
 }
 
