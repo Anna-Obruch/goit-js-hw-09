@@ -41,9 +41,9 @@ function currentDifferenceDate(selectedDates) {
   formatDate = convertMs(timeDifference);
   refs.btnStartTimer.disabled = false;
 }
-refs.btnStartTimer.disabled = true;
 
 function timerStart() {
+  refs.btnStartTimer.disabled = true;
   intervalId = setInterval(() => {
     currentDate = new Date().getTime();
 
