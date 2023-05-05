@@ -14,6 +14,7 @@ const TIMER_DELAY = 1000;
 let intervalId = null;
 let timeDifference = null;
 let currentDate = null;
+let formatDate = null;
 
 refs.btnStartTimer.disabled = true;
 
